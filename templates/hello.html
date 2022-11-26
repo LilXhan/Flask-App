@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }} 
+    Bienvenido 
+{% endblock %}
+
+
+{% block content %}
+    {% if user_ip %} <!-- if we find the user_ip let's render <h1> -->
+
+    <h1>Hola tu ip es -> {{ user_ip }}</h1>
+
+    {% else %} <!-- otherwise let's render <a> -->
+
+    <a href="{{ url_for('index') }}">Ir Inicio</a> <!-- calling function index -->
+
+    {% endif %} <!-- close condicional -->
+
+    <ul>
+    {% for todo in todos %}
+        <li> {{todo}} </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
